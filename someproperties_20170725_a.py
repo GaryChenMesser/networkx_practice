@@ -28,7 +28,7 @@ def bfs_check():
     a=0;
     for b in range(G.number_of_nodes()):
         if(G.node[b]['check']!=-1):
-            a=a+1;
+            a=a+1
     if(a==G.number_of_nodes()):
         return 0
     else:
@@ -40,7 +40,7 @@ def check_1():
         for b in range(G.number_of_nodes()):
             if((a!=b)and(mul_matrix.getA()[a][b]==0)):
                 return 1
-                c=1;
+                c=1
                 break
         if(c==1):
             break
