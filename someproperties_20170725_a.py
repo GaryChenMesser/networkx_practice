@@ -14,16 +14,6 @@ for a in range(G.number_of_nodes()):
     G.node[a]['check']=-1
 
 #function
-'''
-def bfs(n,d):
-    neighbor=G.neighbors(n)
-    for e in range((len(neighbor))):
-        if(G.node[neighbor[e]]['check']==0):
-            G.node[neighbor[e]]['check']=d
-    for e in range((len(neighbor))):
-        if(G.node[neighbor[e]]['check']==d):
-            bfs(n
-'''
 def bfs_check():
     a=0;
     for b in range(G.number_of_nodes()):
@@ -48,13 +38,6 @@ def check_1():
         return 0
 
 #initialize a zero matrix called matrix
-'''    
-matrix=[]
-for a in range(G.number_of_nodes()):
-	matrix.append([])
-	for b in range(G.number_of_nodes()):
-		matrix[a].append(0)
-'''
 matrix=np.zeros((G.number_of_nodes(),G.number_of_nodes()))
 
 #------------------------------adjacency matrix-----------------------------
@@ -65,7 +48,7 @@ for a in range (G.number_of_edges()):
     ad_matrix.getA()[(store[a][0])][(store[a][1])]=1
     ad_matrix.getA()[(store[a][1])][(store[a][0])]=1
 print('adjacency matrix:','\n',ad_matrix)
-'''
+'''uncomment this for directed graph
 #adjacency matrix--directed
 for a in range (G.number_of_edges()):
     matrix[store[i][0]][store[i][1]]=1
@@ -87,14 +70,7 @@ while(check_1()):
                 mul_matrix.getA()[a][b]=count
     
 print('shortest path matrix using matrix multiplication:','\n',mul_matrix)
-'''buffer=ad_matrix
-for a in range(G.number_of_nodes()):
-    for b in range(G.number_of_nodes()):
-        while(buffer[a][b]==0):
-            buffer*=buffer
-        d_(a,b)[a][b]=buffer[a][b]
-        buffer=matrix
-'''
+
 #shortest path between a,b : d_(a,b)......(2)
 #using BFS
 bfs_matrix=matrix.copy()
