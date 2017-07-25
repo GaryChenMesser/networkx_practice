@@ -1,14 +1,16 @@
 #implementation of some properties of a graph
 import networkx as nx
 import numpy.matlib as np
-G=nx.Graph()
-
+#G=nx.Graph()
+G = nx.lollipop_graph(4,6)
 #enter the graph
 #the graph must be connected
 #for example
 #set every node attribute 'check' to -1
-G.add_nodes_from([(0,{'check':-1}),(1,{'check':-1}),(2,{'check':-1}),(3,{'check':-1}),(4,{'check':-1}),(5,{'check':-1}),(6,{'check':-1}),(7,{'check':-1}),(8,{'check':-1})])
-G.add_edges_from([(0,1),(0,7),(1,2),(1,7),(2,3),(2,5),(2,8),(3,4),(3,5),(4,5),(5,6),(6,7),(6,8),(7,8)])
+#G.add_nodes_from([(0,{'check':-1}),(1,{'check':-1}),(2,{'check':-1}),(3,{'check':-1}),(4,{'check':-1}),(5,{'check':-1}),(6,{'check':-1}),(7,{'check':-1}),(8,{'check':-1})])
+#G.add_edges_from([(0,1),(0,7),(1,2),(1,7),(2,3),(2,5),(2,8),(3,4),(3,5),(4,5),(5,6),(6,7),(6,8),(7,8)])
+for a in range(G.number_of_nodes()):
+    G.node[a]['check']=-1
 
 #function
 '''
@@ -121,5 +123,6 @@ print('number of shortest paths matrix:','\n',number_matrix)
 d_max=count
 print('diameter:',d_max)
 #average path length : <d>
-d=sum(sum(bfs_matrix.getA()*number_matrix.getA()))/sum(sum(number_matrix.getA()))
-print('average path length:',d)
+#d=sum(sum(bfs_matrix.getA()*number_matrix.getA()))/(sum(sum(number_matrix.getA()))-diagonal)
+ds=sum(sum(bfs_matrix.getA()))/(G.number_of_nodes()*G.number_of_nodes())
+print('average path length:',ds)
