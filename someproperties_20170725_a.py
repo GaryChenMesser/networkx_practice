@@ -6,8 +6,11 @@ G=nx.Graph()
 #enter the graph
 #the graph must be connected
 #for example
-G.add_nodes_from([0,1,2,3,4,5,6,7,8])
-G.add_edges_from([(0,1),(0,7),(1,2),(1,7),(2,3),(2,5),(2,8),(3,4),(3,5),(4,5),(5,6),(6,7),(6,8),(7,8)])
+#G.add_nodes_from([0,1,2,3,4,5,6,7,8])
+#G.add_edges_from([(0,1),(0,7),(1,2),(1,7),(2,3),(2,5),(2,8),(3,4),(3,5),(4,5),(5,6),(6,7),(6,8),(7,8)])
+G.add_nodes_from([0,1,2,3,4,5,6])
+G.add_edges_from([(0,2),(1,2),(2,3),(2,4),(3,5),(4,5),(3,4),(3,6)])
+
 
 #set every node attribute 'check' to -1
 for a in range(G.number_of_nodes()):
@@ -48,7 +51,7 @@ for a in range (G.number_of_edges()):
     ad_matrix.getA()[(store[a][0])][(store[a][1])]=1
     ad_matrix.getA()[(store[a][1])][(store[a][0])]=1
 print('adjacency matrix:','\n',ad_matrix)
-'''uncomment this for directed graph
+'''
 #adjacency matrix--directed
 for a in range (G.number_of_edges()):
     matrix[store[i][0]][store[i][1]]=1
@@ -110,6 +113,7 @@ print('average path length:',ds)
 
 #---------------------------------C_i-------------------------------------
 #local clustering coefficient:C_i
+count_matrix=np.zeros((1,G.number_of_nodes()))
 cluster_matrix=np.zeros((1,G.number_of_nodes()))
 for a in range(G.number_of_nodes()):
     neighbor=G.neighbors(a)
@@ -118,11 +122,27 @@ for a in range(G.number_of_nodes()):
         for c in range(b+1,len(neighbor)):
             if(ad_matrix.getA()[(neighbor[b])][(neighbor[c])]==1):
                 count=count+1
-    cluster_matrix.getA()[0][a]=2*count/(len(neighbor)*(len(neighbor)-1))
+    if(len(neighbor)-1==0):
+        cluster_matrix.getA()[0][a]=0
+    else:
+        cluster_matrix.getA()[0][a]=2*count/(len(neighbor)*(len(neighbor)-1))
+    count_matrix.getA()[0][a]=count
 print('local clustering coefficient:','\n',cluster_matrix)
 
 #--------------------------------<C>--------------------------------------
-#average clustering coefficient: <C>
+#average (locsl) clustering coefficient: <C>
 C=sum(sum(cluster_matrix.getA()))/len(cluster_matrix.getA()[0])
 print('average clustering coefficient:',C)
 
+#-------------------------------C_delta-----------------------------------
+#global clustering coefficient
+doublecount=0
+for a in range(G.number_of_nodes()):
+    neighbor1=G.neighbors(a)
+    for b in range(len(neighbor1)):
+        neighbor2=G.neighbors(neighbor1[b])
+        for c in range(len(neighbor2)):
+            if(neighbor2[c]!=a):
+                doublecount=doublecount+1
+C_delta=sum(sum(count_matrix.getA()))/doublecount*2
+print('global clustering coefficient:',C_delta)
