@@ -115,16 +115,38 @@ for a in range(G.number_of_nodes()):
     for c in range(G.number_of_nodes()):
         G.node[c]['check']=-1
 print ('shortest path matrix using bfs:','\n',bfs_matrix)
-        
+
+#--------------------------------N_(a,b)---------------------------------        
 #number of shortest paths between a,b : N_(a,b)
 number_matrix=mul.copy()
 print('number of shortest paths matrix:','\n',number_matrix)
 
+#--------------------------------d_max-----------------------------------
 #diameter : d_max
 d_max=count
 print('diameter:',d_max)
+
+#---------------------------------<d>------------------------------------
 #average path length : <d>
 #d=sum(sum(bfs_matrix.getA()*number_matrix.getA()))/(sum(sum(number_matrix.getA()))-diagonal)
 ds=sum(sum(bfs_matrix.getA()))/(G.number_of_nodes()*G.number_of_nodes())
 print('average path length:',ds)
+
+#---------------------------------C_i-------------------------------------
+#local clustering coefficient:C_i
+cluster_matrix=np.zeros((1,G.number_of_nodes()))
+for a in range(G.number_of_nodes()):
+    neighbor=G.neighbors(a)
+    count=0
+    for b in range(len(neighbor)):
+        for c in range(b+1,len(neighbor)):
+            if(ad_matrix.getA()[(neighbor[b])][(neighbor[c])]==1):
+                count=count+1
+    cluster_matrix.getA()[0][a]=2*count/(len(neighbor)*(len(neighbor)-1))
+print('local clustering coefficient:','\n',cluster_matrix)
+
+#--------------------------------<C>--------------------------------------
+#average clustering coefficient: <C>
+C=sum(sum(cluster_matrix.getA()))/len(cluster_matrix.getA()[0])
+print('average clustering coefficient:',C)
 
