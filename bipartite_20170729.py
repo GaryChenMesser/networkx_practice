@@ -34,14 +34,12 @@ while bfs_check():
             print('a=',a)
             G.node[a]['check']=-1
             for b in G.neighbors(a):
-                print('neighbors(a)=',G.neighbors(a))
                 if G.node[b]['part']==-1:
                     G.node[b]['part']=now
                     G.node[b]['check']=step
 
                 else:
                     if G.node[b]['part']!=now:
-                        print('b=',b)
                         print('This graph is not bipartite.')
                         bipart=1
                         break
