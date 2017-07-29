@@ -15,3 +15,8 @@ This program shows how to divide disconnected components of a graph into separat
 complexity_20170728.py
 
 This program computes the number of spanning trees of a graph, which is also called complexity based on Kirchhoff's Matrix-tree Theorem.
+
+simplegraph_20170729.py
+
+This program shows a simple example to detect whether a graph is simple.
+
