@@ -9,7 +9,7 @@ For a deeper look, you can refer to https://networkx.github.io/documentation/net
 
 ----findcomponent_20170726.py----
 
-This program shows how to divide disconnected components of a graph into separate subgraphs using BSF algorithm.  
+This program shows how to divide disconnected components of a graph into separate subgraphs using BFS algorithm.  
 
 
 ----complexity_20170728.py----
