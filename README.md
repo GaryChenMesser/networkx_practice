@@ -23,3 +23,7 @@ This program shows a simple example to detect whether a graph is simple.
 ----bipartite_20170729.py----
 
 This program displays a way to determine if a graph is bipartite or not.
+
+----someproperties_20170731.py----
+
+This program is an update of someproperties_20170725_a.py, which expands the limit of node name. In the original version, node name must be  increasing integers start from 0; in this update, node name can be any distinct number(integer or floating) or string or something else that's allowed for node name in NetworkX.
