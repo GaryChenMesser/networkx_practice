@@ -130,7 +130,7 @@ for a in range(G.number_of_nodes()):
 print('local clustering coefficient:','\n',cluster_matrix)
 
 #--------------------------------<C>--------------------------------------
-#average (locsl) clustering coefficient: <C>
+#average (local) clustering coefficient: <C>
 C=sum(sum(cluster_matrix.getA()))/len(cluster_matrix.getA()[0])
 print('average clustering coefficient:',C)
 
