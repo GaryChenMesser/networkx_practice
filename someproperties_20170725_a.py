@@ -3,7 +3,7 @@ import networkx as nx
 import numpy.matlib as np
 G=nx.Graph()
 
-#enter the graph(the graph name must be ordered intergers start from 0)
+#enter the graph(the node name must be ordered intergers start from 0)
 #the graph must be connected
 #for example
 #G.add_nodes_from([0,1,2,3,4,5,6,7,8])
