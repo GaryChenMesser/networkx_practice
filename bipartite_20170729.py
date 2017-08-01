@@ -27,7 +27,6 @@ step+=1
 while bfs_check():
     for a in G.nodes():
         if G.node[a]['check']==step-1:
-            print('a=',a)
             G.node[a]['check']*=-1
             for b in G.neighbors(a):
                 if G.node[b]['check']==-1:
@@ -35,7 +34,6 @@ while bfs_check():
 
                 else:
                     if (G.node[b]['check']-step)%2==1:
-                        print('This graph is not bipartite.')
                         bipart=1
                         break
             else:
