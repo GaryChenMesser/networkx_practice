@@ -30,3 +30,6 @@ This program is an update of someproperties_20170725_a.py, which expands the lim
 
 ----bipartite_20170802.py----
 This program is totally the same as bipartite_20170729.py except the restriction on the node name.
+
+----findcomponent_matrix_20170802.py----
+This program solve the same issue that findcomponent_20170726.py solved but with matrix computation.
